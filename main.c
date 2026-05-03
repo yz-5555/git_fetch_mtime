@@ -44,14 +44,14 @@ void print_result(double diff) {
 
 int main(void) {
     const char *target = ".git/FETCH_HEAD";
-    struct STAT stat;
+    struct STAT st;
 
-    if (STAT(target, &stat) != 0) {
+    if (STAT(target, &st) != 0) {
         printf("null");
         return 0;
     }
 
-    time_t mtime = stat.st_mtime;
+    time_t mtime = st.st_mtime;
     time_t now = time(NULL);
     double diff = difftime(now, mtime);
 
